@@ -5,17 +5,19 @@ const dragAndDropArea = document.querySelector(".dragAndDrop");
 // ドラッグ中の要素
 let draggedElement = null;
 
-
 /**
  * ドラッグ開始時の処理
  * @param  event {DragEvent}
  */
 const handleDragStart = (event) => {
   draggedElement = event.target;
-  dragAndDropArea.style.setProperty("--dragging-type", event.target.dataset.type);
+  dragAndDropArea.style.setProperty(
+    "--dragging-type",
+    event.target.dataset.type,
+  );
   event.dataTransfer.setData("text/plain", event.target.textContent);
   event.dataTransfer.setData("text/type", event.target.dataset.type);
-}
+};
 
 /**
  * ドラッグ終了時の処理
@@ -23,7 +25,7 @@ const handleDragStart = (event) => {
 const handleDragEnd = () => {
   draggedElement = null;
   dragAndDropArea.style.removeProperty("--dragging-type");
-}
+};
 
 /**
  * ドラッグオーバー時の処理
@@ -37,15 +39,14 @@ const handleDragOver = (event, dropArea) => {
   if (isEmpty) {
     dragAndDropArea.style.setProperty("--is-dragging-over", "true");
   }
-}
+};
 
 /**
  * ドラッグリーブ時の処理
  */
 const handleDragLeave = () => {
   dragAndDropArea.style.removeProperty("--is-dragging-over");
-}
-
+};
 
 // ドラッグする要素にイベントリスナーを追加
 draggableItems.forEach((item) => {
@@ -56,7 +57,9 @@ draggableItems.forEach((item) => {
 // ドロップエリアのイベントリスナーを追加
 dropAreas.forEach((dropArea) => {
   // ドラッグオーバー時
-  dropArea.addEventListener("dragover", (event) => handleDragOver(event, dropArea));
+  dropArea.addEventListener("dragover", (event) =>
+    handleDragOver(event, dropArea),
+  );
 
   // ドラッグリーブ時
   dropArea.addEventListener("dragleave", handleDragLeave);
@@ -79,4 +82,3 @@ dropAreas.forEach((dropArea) => {
     }
   });
 });
-
