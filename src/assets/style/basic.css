@@ -1,0 +1,162 @@
+.hoge {
+  background-color: if(style(--color: primary): red; else: blue;);
+}
+
+.fuga {
+  background-color: if(
+    media(min-width: 1080px): green; media(min-width: 768px): red; else: blue;
+  );
+}
+
+.piyo {
+  background-color: if(supports(display: grid): red; else: blue;);
+}
+
+/* ボタンバリアントのスタイル。バリアントに応じて背景色、ボーダー色、文字色が変化する */
+.buttonVariant {
+  background-color: if(
+    style(--variant: primary): var(--color-primary) ;
+      style(--variant: secondary): var(--color-secondary) ;
+      style(--variant: tertiary): transparent;
+  );
+  border-color: if(
+    style(--variant: primary): var(--color-primary) ;
+      style(--variant: secondary): var(--color-secondary) ;
+      style(--variant: tertiary): var(--color-tertiary) ;
+  );
+  color: if(
+    style(--variant: tertiary): var(--color-text) ;
+      else: var(--color-text-inverted)
+  );
+}
+
+/* ボタンバリアントのスタイル 別の書き方 */
+.buttonVariant {
+  --background-color: if(
+    style(--variant: primary): var(--color-primary) ;
+      style(--variant: secondary): var(--color-secondary) ;
+      style(--variant: tertiary): transparent;
+  );
+  --border-color: if(
+    style(--variant: primary): var(--color-primary) ;
+      style(--variant: secondary): var(--color-secondary) ;
+      style(--variant: tertiary): var(--color-tertiary) ;
+  );
+  --text-color: if(
+    style(--variant: tertiary): var(--color-text) ;
+      else: var(--color-text-inverted)
+  );
+
+  background-color: var(--background-color);
+  border-color: var(--border-color);
+  color: var(--text-color);
+}
+
+.typography {
+  font-size: if(
+    style(--font-size: display): 48px; style(--font-size: heading): 32px;
+      style(--font-size: body): 16px; style(--font-size: small): 14px;
+      else: 16px;
+  );
+  font-weight: if(
+    style(--font-weight: bold): 700; style(--font-weight: regular): 400;
+      else: 400;
+  );
+  color: if(
+    style(--font-color: body): #111; style(--font-color: small): #555;
+      else: #111;
+  );
+}
+
+.fontSize-display {
+  --font-size: display;
+}
+
+.fontSize-heading {
+  --font-size: heading;
+}
+
+.fontSize-body {
+  --font-size: body;
+}
+
+.fontSize-small {
+  --font-size: small;
+}
+
+.fontWeight-bold {
+  --font-weight: bold;
+}
+
+.fontWeight-regular {
+  --font-weight: regular;
+}
+
+.fontColor-body {
+  --font-color: body;
+}
+
+.fontColor-small {
+  --font-color: small;
+}
+
+/** 3種類のバリアントに非活性・ホバーのスタイルがある場合 */
+
+.buttonComplexVariant {
+  &:disabled {
+    --isDisabled: true;
+  }
+  &:hover {
+    --isHover: true;
+  }
+}
+
+.buttonComplexVariant {
+  background-color: if(
+    style(--variant: primary): if(
+        style(--isDisabled: true): var(--color-primary-disabled) ;
+          style(--isHover: true): var(--color-primary-hover) ;
+          else: var(--color-primary) ;
+      )
+      ;
+      style(--variant: secondary): if(
+        style(--isDisabled: true): var(--color-secondary-disabled) ;
+          style(--isHover: true): var(--color-secondary-hover) ;
+          else: var(--color-secondary) ;
+      )
+      ;
+      style(--variant: tertiary): if(
+        style(--isDisabled: true): transparent;
+          style(--isHover: true): var(--color-tertiary-hover) ;
+          else: transparent;
+      )
+      ;
+  );
+  border-color: if(
+    style(--variant: primary): if(
+        style(--isDisabled: true): var(--color-primary-disabled) ;
+          style(--isHover: true): var(--color-primary-hover) ;
+          else: var(--color-primary) ;
+      )
+      ;
+      style(--variant: secondary): if(
+        style(--isDisabled: true): var(--color-secondary-disabled) ;
+          style(--isHover: true): var(--color-secondary-hover) ;
+          else: var(--color-secondary) ;
+      )
+      ;
+      style(--variant: tertiary): if(
+        style(--isDisabled: true): var(--color-tertiary-disabled) ;
+          style(--isHover: true): var(--color-tertiary-hover) ;
+          else: var(--color-tertiary) ;
+      )
+      ;
+  );
+  color: if(
+    style(--variant: tertiary): if(
+        style(--isDisabled: true): var(--color-text-disabled) ;
+          else: var(--color-text)
+      )
+      ; else: var(--color-text-inverted)
+  );
+}

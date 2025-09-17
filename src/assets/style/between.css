@@ -1,0 +1,59 @@
+.cardComponent {
+  --is-hover: false;
+  &:hover {
+    --is-hover: true;
+  }
+}
+
+.buttonComponent {
+  background-color: if(style(--is-hover: true): #31316d; else: #6767d2;);
+}
+
+.dropArea {
+  --color-typeA: rgba(57, 227, 102, 1);
+  --color-typeA-droppable: rgba(57, 227, 102, 0.2);
+  --color-typeA-droppable-hover: rgba(57, 227, 102, 0.5);
+  --color-typeB: rgba(57, 128, 227, 1);
+  --color-typeB-droppable: rgba(57, 128, 227, 0.2);
+  --color-typeB-droppable-hover: rgba(57, 128, 227, 0.5);
+  --color-typeC: rgba(227, 193, 57, 1);
+  --color-typeC-droppable: rgba(227, 193, 57, 0.2);
+  --color-typeC-droppable-hover: rgba(227, 193, 57, 0.5);
+  /* ドロップ可能な状態のスタイル */
+  &.typeA {
+    border-color: var(--color-typeA);
+    &:not(:has(.draggableItem)) {
+      background-color: if(
+        style(--dragging-type: A): if(
+            style(--is-dragging-over: true): var(--color-typeA-droppable-hover)
+              ; else: var(--color-typeA-droppable) ;
+          )
+          ; else: transparent;
+      );
+    }
+  }
+  &.typeB {
+    border-color: var(--color-typeB);
+    &:not(:has(.draggableItem)) {
+      background-color: if(
+        style(--dragging-type: B): if(
+            style(--is-dragging-over: true): var(--color-typeB-droppable-hover)
+              ; else: var(--color-typeB-droppable) ;
+          )
+          ; else: transparent;
+      );
+    }
+  }
+  &.typeC {
+    border-color: #e3c139;
+    &:not(:has(.draggableItem)) {
+      background-color: if(
+        style(--dragging-type: C): if(
+            style(--is-dragging-over: true): var(--color-typeC-droppable-hover)
+              ; else: var(--color-typeC-droppable) ;
+          )
+          ; else: transparent;
+      );
+    }
+  }
+}

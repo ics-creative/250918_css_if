@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=640" />
+    <title>基本的な使い方 | CSS if()</title>
+  </head>
+
+  <body>
+    <div class="contentsWrapper">
+      <h1>基本的な使い方</h1>
+      <section>
+        <h2>基本的な記法</h2>
+        <div>
+          <div class="basicUsage">
+            <p>--colorの値がprimaryなら赤、それ以外は青</p>
+            <div class="hoge" style="--color: primary"></div>
+          </div>
+          <div class="basicUsage">
+            <p>画面幅が768px以下のときは赤、それ以外は青</p>
+            <div class="fuga"></div>
+          </div>
+          <div class="basicUsage">
+            <p>display: gridが使えるときは赤、それ以外は青</p>
+            <div class="piyo"></div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>ボタンの種類を切り替える</h2>
+        <div class="buttonVariantSwitch">
+          <div class="radioButtonWrapper">
+            <label>
+              <input
+                type="radio"
+                name="buttonVariant"
+                id="buttonVariantPrimary"
+                checked
+                value="primary"
+              />
+              プライマリー
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="buttonVariant"
+                id="buttonVariantSecondary"
+                value="secondary"
+              />
+              セカンダリー
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="buttonVariant"
+                id="buttonVariantTertiary"
+                value="tertiary"
+              />
+              ターシャリー
+            </label>
+          </div>
+        </div>
+
+        <div class="resultWrapper">
+          <button class="basicButtonStyle buttonVariant">Button</button>
+        </div>
+      </section>
+
+      <section>
+        <h2>タイポグラフィの種類をクラス名で切り替える</h2>
+        <div class="typographyVariant">
+          <label for="fontSize" class="typographySelectorLabel">
+            フォントサイズ：
+            <select name="fontSize" id="fontSize" class="typographySelector">
+              <option value="display" selected>display</option>
+              <option value="heading">heading</option>
+              <option value="body">body</option>
+              <option value="small">small</option>
+            </select>
+          </label>
+
+          <label for="fontSize" class="typographySelectorLabel">
+            フォントウェイト
+            <select
+              name="fontWeight"
+              id="fontWeight"
+              class="typographySelector"
+            >
+              <option value="bold" selected>bold</option>
+              <option value="regular">regular</option>
+            </select>
+          </label>
+
+          <label for="fontSize" class="typographySelectorLabel">
+            フォントカラー：
+            <select name="fontColor" id="fontColor" class="typographySelector">
+              <option value="body" selected>body</option>
+              <option value="small">small</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="resultWrapper">
+          <p class="typography">メロスは激怒した</p>
+        </div>
+      </section>
+      <section>
+        <h2>さまざまな状態を持つボタン</h2>
+        <div class="resultWrapper">
+          <div class="buttonWrapper">
+            <p class="buttonWrapperLabel">
+              プライマリー:活性
+              <button
+                class="basicButtonStyle buttonComplexVariant"
+                style="--variant: primary"
+              >
+                Button
+              </button>
+            </p>
+            <p class="buttonWrapperLabel">
+              プライマリー:非活性
+              <button
+                class="basicButtonStyle buttonComplexVariant"
+                style="--variant: primary"
+                disabled
+              >
+                Button
+              </button>
+            </p>
+            <p class="buttonWrapperLabel">
+              セカンダリー:活性
+              <button
+                class="basicButtonStyle buttonComplexVariant"
+                style="--variant: secondary"
+              >
+                Button
+              </button>
+            </p>
+            <p class="buttonWrapperLabel">
+              セカンダリー:非活性
+              <button
+                class="basicButtonStyle buttonComplexVariant"
+                style="--variant: secondary"
+                disabled
+              >
+                Button
+              </button>
+            </p>
+            <p class="buttonWrapperLabel">
+              ターシャリー:活性
+              <button
+                class="basicButtonStyle buttonComplexVariant"
+                style="--variant: tertiary"
+              >
+                Button
+              </button>
+            </p>
+            <p class="buttonWrapperLabel">
+              ターシャリー:非活性
+              <button
+                class="basicButtonStyle buttonComplexVariant"
+                style="--variant: tertiary"
+                disabled
+              >
+                Button
+              </button>
+            </p>
+          </div>
+        </div>
+      </section>
+      <div class="backToTop">
+        <a href="../">目次に戻る</a>
+      </div>
+    </div>
+    <script type="module" src="/main.js"></script>
+    <script type="module" src="/assets/script/switchVariant.js"></script>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=640" />
+    <title>グローバルな状態 | CSS if()</title>
+  </head>
+
+  <body>
+    <div class="contentsWrapper">
+      <h1>グローバルな状態への利用</h1>
+
+      <section>
+        <h2>画面サイズに応じて表示が変わる</h2>
+
+        <div class="resultWrapper">
+          <div class="windowSizeWrapper">
+            <div class="sizeJudgeBox"></div>
+            <p class="desktopOnly">画面サイズ：デスクトップ（暗青色）</p>
+            <p class="tabletOnly">画面サイズ：タブレット（青緑色）</p>
+            <p class="mobileOnly">画面サイズ：モバイル（緑色）</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>カラースキーム</h2>
+        <div class="colorScheme">
+          <div class="colorSchemeSwitch">
+            <span class="colorSchemeSwitchLabel"
+              >カラースキームを切り替える</span
+            >
+            <div class="radioButtonWrapper">
+              <label for="colorScheme1">
+                <input
+                  type="radio"
+                  name="colorScheme"
+                  id="colorScheme1"
+                  value="type1"
+                  checked
+                />
+                type1
+              </label>
+              <label for="colorScheme2">
+                <input
+                  type="radio"
+                  name="colorScheme"
+                  id="colorScheme2"
+                  value="type2"
+                />
+                type2
+              </label>
+              <label for="colorScheme3">
+                <input
+                  type="radio"
+                  name="colorScheme"
+                  id="colorScheme3"
+                  value="type3"
+                />
+                type3
+              </label>
+            </div>
+          </div>
+          <div class="colorSchemeBoxWrapper">
+            <div class="colorSchemeBox color1"></div>
+            <div class="colorSchemeBox color2"></div>
+            <div class="colorSchemeBox color3"></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="backToTop">
+        <a href="../">目次に戻る</a>
+      </div>
+    </div>
+    <script type="module" src="/main.js"></script>
+    <script type="module" src="/assets/script/switchColorScheme.js"></script>
+  </body>
+</html>

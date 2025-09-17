@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=640" />
+    <title>CSSアニメーション | CSS if()</title>
+  </head>
+
+  <body>
+    <div class="contentsWrapper">
+      <h1>CSSアニメーションへの応用</h1>
+      <section>
+        <h2>アニメーション中の条件分岐</h2>
+        <div class="resultWrapper">
+          <div class="hpBarWrapper">
+            <span class="hpBarLabel">HP:</span>
+            <div class="hpBar">
+              <div class="hpBarInner"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>JavaScriptとの連動</h2>
+        <p>スライダーを操作してください</p>
+        <div class="resultWrapper">
+          <div class="temparetureSliderContainer" style="--tempareture: 20">
+            <div class="temparetureIconWrapper">
+              <div class="temparetureIconInner">
+                <span class="temparetureIcon icy"> 🧊 </span>
+                <span class="temparetureIcon cold"> 🥶 </span>
+                <span class="temparetureIcon comfortable"> 😃 </span>
+                <span class="temparetureIcon hot"> 🥵 </span>
+                <span class="temparetureIcon fire"> 🔥 </span>
+              </div>
+            </div>
+            <div class="temparetureSliderInner">
+              <span class="temparetureSliderValue">0℃</span>
+              <input
+                type="range"
+                min="0"
+                max="40"
+                value="20"
+                class="temparetureSlider"
+              />
+              <span class="temparetureSliderValue">40℃</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="backToTop">
+        <a href="../">目次に戻る</a>
+      </div>
+    </div>
+    <script type="module" src="/main.js"></script>
+    <script type="module" src="/assets/script/slideTemperature.js"></script>
+  </body>
+</html>

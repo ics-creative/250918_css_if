@@ -1,0 +1,79 @@
+@property --window-size {
+  syntax: "mobile | tablet | desktop";
+  inherits: true;
+  initial-value: desktop;
+}
+
+:root {
+  --window-size: if(
+    media(max-width: 768px): mobile ; media(768px <= width < 1024px): tablet ;
+      else: desktop ;
+  );
+}
+/* 従来のメディアクエリでの書き方
+@media screen and (max-width: 768px) {
+  :root {
+    --window-size: mobile;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  :root {
+    --window-size: tablet;
+  }
+}
+@media screen and (min-width: 1024px) {
+  :root {
+    --window-size: desktop;
+  }
+}
+*/
+
+.sizeJudgeBox {
+  background-color: if(
+    style(--window-size: mobile): var(--color-tertiary) ;
+      style(--window-size: tablet): var(--color-secondary) ;
+      style(--window-size: desktop): var(--color-primary) ;
+  );
+}
+
+.desktopOnly {
+  display: if(style(--window-size: desktop): revert; else: none;);
+}
+
+.tabletOnly {
+  display: if(style(--window-size: tablet): revert; else: none;);
+}
+
+.mobileOnly {
+  display: if(style(--window-size: mobile): revert; else: none;);
+}
+
+:root {
+  --color-1: if(
+    style(--color-scheme: type1): #28536B;
+      style(--color-scheme: type2): #5BC0EB;
+      style(--color-scheme: type3): #36213E;
+  );
+  --color-2: if(
+    style(--color-scheme: type1): #C2948A;
+      style(--color-scheme: type2): #FDE74C;
+      style(--color-scheme: type3): #554971;
+  );
+  --color-3: if(
+    style(--color-scheme: type1): #7EA8BE;
+      style(--color-scheme: type2): #9BC53D;
+      style(--color-scheme: type3): #63768D;
+  );
+}
+
+.colorSchemeBox.color1 {
+  background-color: var(--color-1);
+}
+
+.colorSchemeBox.color2 {
+  background-color: var(--color-2);
+}
+
+.colorSchemeBox.color3 {
+  background-color: var(--color-3);
+}

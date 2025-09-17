@@ -1,0 +1,102 @@
+@property --is-under-50 {
+  syntax: "<integer>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --is-under-20 {
+  syntax: "<integer>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --hp-bar-width {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+
+.hpBarInner {
+  --is-under-50: sign(var(--hp-bar-width) - 50%);
+  --is-under-20: sign(var(--hp-bar-width) - 20%);
+  width: var(--hp-bar-width);
+  background-color: if(
+    style(--is-under-20: -1): #e60c30; style(--is-under-50: -1): #e6df0c;
+      else: #0ec70b
+  );
+  animation: hpBar 3s linear infinite backwards;
+}
+
+/* 開始前の溜めと終了後の溜めを作るため*/
+@keyframes hpBar {
+  0% {
+    --hp-bar-width: 100%;
+  }
+  20% {
+    --hp-bar-width: 100%;
+  }
+  70% {
+    --hp-bar-width: 0%;
+  }
+  100% {
+    --hp-bar-width: 0%;
+  }
+}
+
+@property --tempareture {
+  syntax: "<integer>";
+  inherits: true;
+  initial-value: 20;
+}
+
+@property --icon-icy {
+  syntax: "<integer>";
+  inherits: true;
+  initial-value: 1;
+}
+
+@property --icon-cold {
+  syntax: "<integer>";
+  inherits: true;
+  initial-value: 1;
+}
+
+@property --icon-comfortable {
+  syntax: "<integer>";
+  inherits: true;
+  initial-value: 1;
+}
+
+@property --icon-hot {
+  syntax: "<integer>";
+  inherits: true;
+  initial-value: 1;
+}
+
+.temparetureSliderContainer {
+  --icon-icy: sign(var(--tempareture) - 5);
+  --icon-cold: sign(var(--tempareture) - 17);
+  --icon-comfortable: sign(var(--tempareture) - 27);
+  --icon-hot: sign(var(--tempareture) - 35);
+}
+
+.temparetureIconInner {
+  display: flex;
+  flex-direction: column;
+  transition: translate 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+  translate: if(
+    style(--icon-icy: -1): 0px 0px; style(--icon-cold: -1): 0px -96px;
+      style(--icon-comfortable: -1): 0px -192px;
+      style(--icon-hot: -1): 0px -288px; style(--icon-hot: 0): 0px -384px;
+      style(--icon-hot: 1): 0px -384px; else: 0px 0px;
+  );
+}
+
+.temparetureIcon {
+  width: 96px;
+  height: 96px;
+  font-size: 64px;
+  text-align: center;
+  line-height: 1.5;
+  font-family: "Noto Color Emoji", serif;
+}
