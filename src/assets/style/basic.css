@@ -1,13 +1,15 @@
+/* --colorの値がprimaryなら赤、それ以外は青 */
 .hoge {
   background-color: if(style(--color: primary): red; else: blue;);
 }
 
+/* 画面幅が768px以下のときは赤、それ以外は青 */
+
 .fuga {
-  background-color: if(
-    media(min-width: 1080px): green; media(min-width: 768px): red; else: blue;
-  );
+  background-color: if(media(width <= 768px): red; else: blue;);
 }
 
+/* display: gridが使えるときは赤、それ以外は青 */
 .piyo {
   background-color: if(supports(display: grid): red; else: blue;);
 }
@@ -62,10 +64,6 @@
     style(--font-weight: bold): 700; style(--font-weight: regular): 400;
       else: 400;
   );
-  color: if(
-    style(--font-color: body): #111; style(--font-color: small): #555;
-      else: #111;
-  );
 }
 
 .fontSize-display {
@@ -90,14 +88,6 @@
 
 .fontWeight-regular {
   --font-weight: regular;
-}
-
-.fontColor-body {
-  --font-color: body;
-}
-
-.fontColor-small {
-  --font-color: small;
 }
 
 /** 3種類のバリアントに非活性・ホバーのスタイルがある場合 */

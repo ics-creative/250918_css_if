@@ -58,7 +58,6 @@ const initTypographyVariantSwitch = () => {
       };
     },
   );
-  console.log(checkedSelectors);
   checkedSelectors.forEach((selector) => {
     setTypographyVariant(selector.name, selector.value);
   });

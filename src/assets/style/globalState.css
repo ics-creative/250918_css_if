@@ -6,14 +6,15 @@
 
 :root {
   --window-size: if(
-    media(max-width: 768px): mobile ; media(768px <= width < 1024px): tablet ;
-      else: desktop ;
+    media(width >= 1024px): desktop; media(768px <= width < 1024px): tablet;
+      else: mobile;
   );
 }
+
 /* 従来のメディアクエリでの書き方
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 1024px) {
   :root {
-    --window-size: mobile;
+    --window-size: desktop;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 1024px) {
@@ -21,11 +22,13 @@
     --window-size: tablet;
   }
 }
-@media screen and (min-width: 1024px) {
+@media screen and (max-width: 768px) {
   :root {
-    --window-size: desktop;
+    --window-size: mobile;
   }
 }
+
+
 */
 
 .sizeJudgeBox {
