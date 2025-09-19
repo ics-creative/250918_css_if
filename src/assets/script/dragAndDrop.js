@@ -34,9 +34,15 @@ const handleDragEnd = () => {
  */
 const handleDragOver = (event, dropArea) => {
   event.preventDefault(); // デフォルトの動作を防ぐ
+  // ドラッグした要素のタイプを取得
+  const draggedType = draggedElement.dataset.type;
+
   // 対象のドロップエリアが空かどうか？出発地点のドロップエリアを対象外とするため。
   const isEmpty = dropArea.querySelector(".draggableItem") === null;
-  if (isEmpty) {
+
+  // ドラッグした要素のタイプとドロップエリアのタイプが一致するか？
+  const isSameType = draggedType === dropArea.dataset.droppableType;
+  if (isEmpty && isSameType) {
     dragAndDropArea.style.setProperty("--is-dragging-over", "true");
   }
 };
